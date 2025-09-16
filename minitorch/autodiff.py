@@ -68,7 +68,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     was = []
     sorted_list = []
 
-    def sort(node):
+    def sort(node: Variable) -> None:
         if node.unique_id not in was and not node.is_constant():
             was.append(node.unique_id)
             for el in node.parents:

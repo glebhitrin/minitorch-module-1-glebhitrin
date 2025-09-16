@@ -26,7 +26,7 @@ def mul(x: float, y: float) -> float:
     return x * y
 
 
-def id(x):
+def id(x: float) -> float:
     """Returns the input unchanged.
 
     Args:
@@ -221,7 +221,7 @@ def inv(x: float) -> float:
     return 1 / x
 
 
-def log_back(x: float, y: float):
+def log_back(x: float, y: float) -> float:
     """Computes the derivative of log times a second arg.
 
     Args:
@@ -237,7 +237,7 @@ def log_back(x: float, y: float):
     return inv(x) * y
 
 
-def inv_back(x: float, y: float):
+def inv_back(x: float, y: float) -> float:
     """Computes the derivative of reciprocal times a second arg.
 
     Args:
@@ -255,7 +255,7 @@ def inv_back(x: float, y: float):
     return -y / (x ** 2)
 
 
-def relu_back(x: float, y: float):
+def relu_back(x: float, y: float) -> float:
     """Computes the derivative of ReLU times a second arg.
 
     Args:
