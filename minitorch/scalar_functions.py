@@ -90,9 +90,9 @@ class Log(ScalarFunction):
         return float(operators.log(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         (a,) = ctx.saved_values
-        return operators.log_back(a, d_output)
+        return operators.log_back(a, d_output),
 
 
 # To implement.
@@ -121,9 +121,9 @@ class Inv(ScalarFunction):
         return float(operators.inv(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         (a,) = ctx.saved_values
-        return operators.inv_back(a, d_output)
+        return operators.inv_back(a, d_output),
 
 
 class Neg(ScalarFunction):
@@ -134,8 +134,8 @@ class Neg(ScalarFunction):
         return float(operators.neg(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
-        return operators.neg(d_output)
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
+        return operators.neg(d_output),
 
 
 class Sigmoid(ScalarFunction):
@@ -147,9 +147,9 @@ class Sigmoid(ScalarFunction):
         return float(operators.sigmoid(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         (a,) = ctx.saved_values
-        return d_output * operators.sigmoid(a) * (1 - operators.sigmoid(a))
+        return d_output * operators.sigmoid(a) * (1 - operators.sigmoid(a)),
 
 
 class ReLU(ScalarFunction):
@@ -161,9 +161,9 @@ class ReLU(ScalarFunction):
         return float(operators.relu(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         (a,) = ctx.saved_values
-        return operators.relu_back(a, d_output)
+        return operators.relu_back(a, d_output),
 
 
 class Exp(ScalarFunction):
@@ -175,9 +175,9 @@ class Exp(ScalarFunction):
         return float(operators.exp(a))
 
     @staticmethod
-    def backward(ctx: Context, d_output: float) -> float:
+    def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         (a,) = ctx.saved_values
-        return d_output * operators.exp(a)
+        return d_output * operators.exp(a),
 
 
 class LT(ScalarFunction):
