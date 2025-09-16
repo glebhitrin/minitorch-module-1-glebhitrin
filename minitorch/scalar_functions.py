@@ -68,7 +68,7 @@ class ScalarFunction:
         return minitorch.scalar.Scalar(c, back)
 
     @classmethod
-    def backward(cls, ctx, d_output):
+    def backward(cls, ctx: Context, d_output: float) -> Tuple[float, ...]:
         pass
 
 
