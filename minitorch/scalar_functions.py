@@ -67,6 +67,10 @@ class ScalarFunction:
         back = minitorch.scalar.ScalarHistory(cls, ctx, scalars)
         return minitorch.scalar.Scalar(c, back)
 
+    @classmethod
+    def backward(cls, ctx, d_output):
+        pass
+
 
 # Examples
 class Add(ScalarFunction):
