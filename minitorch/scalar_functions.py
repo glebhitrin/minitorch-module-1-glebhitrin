@@ -37,12 +37,12 @@ class ScalarFunction:
     """
 
     @classmethod
-    def _backward(cls, ctx: Context, d_out: float) -> Tuple[float, ...]:
-        return wrap_tuple(cls.backward(ctx, d_out))  # type: ignore
-
-    @classmethod
     def _forward(cls, ctx: Context, *inps: float) -> float:
         return cls.forward(ctx, *inps)  # type: ignore
+
+    @classmethod
+    def backward(cls, ctx: Context, d_out: float) -> Tuple[float, ...]:
+        return wrap_tuple(cls.backward(ctx, d_out))  # type: ignore
 
     @classmethod
     def apply(cls, *vals: "ScalarLike") -> Scalar:
@@ -66,10 +66,6 @@ class ScalarFunction:
         # Create a new variable from the result with a new history.
         back = minitorch.scalar.ScalarHistory(cls, ctx, scalars)
         return minitorch.scalar.Scalar(c, back)
-
-    @classmethod
-    def backward(cls, ctx: Context, d_output: float) -> Tuple[float, ...]:
-        pass
 
 
 # Examples
