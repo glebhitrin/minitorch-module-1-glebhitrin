@@ -8,8 +8,6 @@ from . import operators
 from .autodiff import Context
 
 if TYPE_CHECKING:
-    from typing import Tuple
-
     from .scalar import Scalar, ScalarLike
 
 

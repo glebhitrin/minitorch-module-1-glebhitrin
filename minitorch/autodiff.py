@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Iterable, List, Tuple
+from typing import Any, Iterable, Tuple
 
 from typing_extensions import Protocol
 
@@ -101,7 +101,7 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
                     devs[el_pred.unique_id] = dev
                 else:
                     devs[el_pred.unique_id] += dev
-        
+
 
 @dataclass
 class Context:
